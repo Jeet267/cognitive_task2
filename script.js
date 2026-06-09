@@ -1,7 +1,7 @@
 
 const VIDEOS = [
     {
-        id: 'RJTCAL1DRro', // L30 Penthouse | Pursuit of a Radical Rhapsody
+        id: 'RJTCAL1DRro', 
         title: 'L30 Penthouse | Pursuit of a Radical Rhapsody',
         chapters: [
             { time: 0, title: 'Introduction' },
