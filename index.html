@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cognitive Video Chapters & AI Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Cognitive Video Player</h1>
+        <p>Dynamic chapters and AI-powered video segmentation</p>
+    </header>
+
+    <main>
+        <!-- Section 1: Carousel & Chapters -->
+        <section class="player-section">
+            <div class="carousel-container">
+                <button class="nav-btn prev-btn" aria-label="Previous Video">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <div class="carousel-viewport">
+                    <div class="carousel-track" id="carousel-track">
+                        <!-- Video Items will be injected here -->
+                    </div>
+                </div>
+                <button class="nav-btn next-btn" aria-label="Next Video">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+            </div>
+
+            <div class="chapters-panel">
+                <h2>Video Chapters</h2>
+                <div class="chapters-list" id="chapters-list">
+                    <!-- Chapters will be injected here based on active video -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: AI Chapter Generator -->
+        <section class="generator-section">
+            <div class="generator-header">
+                <h2>AI Chapter Generator</h2>
+                <p>Paste a YouTube URL to automatically generate semantically meaningful chapters based on cognitive weight and narrative pivots.</p>
+            </div>
+            
+            <div class="generator-input-group">
+                <input type="text" id="youtube-url" placeholder="https://www.youtube.com/watch?v=...">
+                <button id="generate-btn">
+                    <span class="spinner"></span>
+                    <span class="btn-text">Generate Chapters</span>
+                </button>
+            </div>
+
+            <div class="generator-results hidden" id="generator-results">
+                <div class="result-columns">
+                    <div class="preview-column">
+                        <h3>Visual Preview</h3>
+                        <div class="preview-chapters" id="preview-chapters"></div>
+                    </div>
+                    <div class="code-column">
+                        <h3>Export (chapters.js)</h3>
+                        <div class="code-block-container">
+                            <button class="copy-btn" id="copy-btn">Copy</button>
+                            <pre><code id="code-output"></code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
