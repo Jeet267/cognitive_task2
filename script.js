@@ -1,4 +1,4 @@
-// Hardcoded Videos and Chapters for the Carousel
+
 const VIDEOS = [
     {
         id: 'RJTCAL1DRro', // L30 Penthouse | Pursuit of a Radical Rhapsody
@@ -35,7 +35,7 @@ const VIDEOS = [
     }
 ];
 
-// Carousel State
+
 let currentIndex = 0;
 
 // Initialize Player Section
@@ -45,11 +45,11 @@ const prevBtn = document.querySelector('.prev-btn');
 const nextBtn = document.querySelector('.next-btn');
 
 function initCarousel() {
-    // Inject iframes
+
     VIDEOS.forEach((video) => {
         const item = document.createElement('div');
         item.className = 'carousel-item';
-        // Note: enablejsapi=1 is required to listen to postMessage commands
+
         item.innerHTML = `<iframe id="yt-${video.id}" src="https://www.youtube.com/embed/${video.id}?enablejsapi=1&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
         track.appendChild(item);
     });
@@ -80,7 +80,7 @@ function updateCarousel() {
     nextBtn.disabled = currentIndex === VIDEOS.length - 1;
 }
 
-// Convert seconds to MM:SS
+
 function formatTime(seconds) {
     const m = Math.floor(seconds / 60);
     const s = Math.floor(seconds % 60);
@@ -100,11 +100,11 @@ function renderChapters() {
         `;
         
         btn.addEventListener('click', () => {
-            // Remove active class from others
+
             document.querySelectorAll('.chapter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             
-            // Post message to the active iframe
+
             seekVideo(activeVideo.id, chapter.time);
         });
 
@@ -112,11 +112,11 @@ function renderChapters() {
     });
 }
 
-// The core trick: Using postMessage to interact with YouTube iframe without external scripts
+
 function seekVideo(videoId, seconds) {
     const iframe = document.getElementById(`yt-${videoId}`);
     if (iframe && iframe.contentWindow) {
-        // We must send a stringified JSON object conforming to YT API spec
+
         iframe.contentWindow.postMessage(JSON.stringify({
             event: 'command',
             func: 'seekTo',
@@ -131,7 +131,7 @@ function seekVideo(videoId, seconds) {
     }
 }
 
-// --- AI Chapter Generator Simulation ---
+
 const generateBtn = document.getElementById('generate-btn');
 const urlInput = document.getElementById('youtube-url');
 const resultsArea = document.getElementById('generator-results');
@@ -145,9 +145,9 @@ function extractVideoID(url) {
     return (match && match[2].length === 11) ? match[2] : null;
 }
 
-// Mock AI output based on URL
+
 function generateMockChapters(videoId) {
-    // Generate structurally plausible chapters
+
     return [
         { time: 0, title: "The Hook & Core Premise" },
         { time: 125, title: "Contextual Framework" },
@@ -170,17 +170,17 @@ generateBtn.addEventListener('click', () => {
         return;
     }
 
-    // UI Loading state
+
     generateBtn.classList.add('generating');
     resultsArea.classList.add('hidden');
 
-    // Simulate AI processing delay (e.g. Claude thinking based on prompt)
+
     setTimeout(() => {
         generateBtn.classList.remove('generating');
         
         const chapters = generateMockChapters(videoId);
         
-        // 1. Render Visual Preview
+
         previewArea.innerHTML = '';
         chapters.forEach(ch => {
             const el = document.createElement('div');
@@ -192,7 +192,7 @@ generateBtn.addEventListener('click', () => {
             previewArea.appendChild(el);
         });
 
-        // 2. Generate chapters.js export
+
         const codeString = `// Output based on system prompt: 
 // "Treat every video as if it has invisible gravitational pull points..."
 
@@ -214,7 +214,7 @@ export function renderChapters(containerId) {
         codeOutput.textContent = codeString;
         resultsArea.classList.remove('hidden');
 
-    }, 2000); // 2 second mock delay
+    }, 2000); 
 });
 
 copyBtn.addEventListener('click', () => {
@@ -225,5 +225,5 @@ copyBtn.addEventListener('click', () => {
     });
 });
 
-// Init
+
 document.addEventListener('DOMContentLoaded', initCarousel);
