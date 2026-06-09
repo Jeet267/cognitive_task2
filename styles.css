@@ -55,7 +55,7 @@ main {
     gap: 4rem;
 }
 
-/* Player Section */
+
 .player-section {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -63,7 +63,7 @@ main {
     align-items: start;
 }
 
-/* Carousel */
+
 .carousel-container {
     position: relative;
     background: var(--surface-color);
@@ -128,7 +128,7 @@ main {
 .prev-btn { left: -20px; }
 .next-btn { right: -20px; }
 
-/* Chapters */
+
 .chapters-panel {
     background: var(--surface-color);
     border-radius: 16px;
@@ -219,7 +219,7 @@ main {
     flex: 1;
 }
 
-/* Generator Section */
+
 .generator-section {
     background: var(--surface-color);
     border-radius: 20px;
@@ -380,7 +380,7 @@ main {
     background: rgba(255, 255, 255, 0.2);
 }
 
-/* Loading animation for generation */
+
 .spinner {
     width: 20px;
     height: 20px;
